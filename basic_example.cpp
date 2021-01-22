@@ -31,8 +31,11 @@ int main()
     std::thread t1(findEven, start, end);
     std::thread t2(findOdd, start, end);
 
-    t1.join();
-    t2.join();
+    if (t1.joinable())
+        t1.join();
+        
+    if (t2.joinable())
+        t2.join();
 
     // findEven(start, end);
     // findOdd(start, end);
